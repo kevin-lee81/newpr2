@@ -193,7 +193,7 @@ section {
   gap: 50px;
 }
 
-/* [수정] 이미지 컨테이너: 이미지 중앙 정렬을 위해 flex 속성 추가 */
+/* [수정] 이미지 컨테이너: 이미지 중앙 정렬 */
 .about-image {
   flex: 1;
   display: flex;
@@ -201,7 +201,7 @@ section {
   align-items: center;
 }
 
-/* [수정] 이미지 크기: 2/3로 줄이고 비율 유지 */
+/* [수정] 이미지 크기: 너비를 컨테이너의 2/3로 제한 */
 .about-image img {
   width: 66.7%;
   height: auto;
@@ -327,51 +327,56 @@ section {
 .contact {
     background: #f8f9fa;
 }
-/* [수정] 4열 배치를 위해 너비 확장 */
+
 .contact-content {
-    max-width: 1200px; 
+    max-width: 1200px;
     margin: 0 auto;
 }
-/* [수정] 그리드 레이아웃을 데스크톱에서 4열로 고정 */
+
+/* [문제 원인 및 해결]
+   기존 HTML의 .info-item 안에 <div>가 하나 더 있는 구조와 CSS가 맞지 않았습니다.
+   아래와 같이 구조에 맞게 CSS를 수정하여 문제를 해결했습니다. */
+
 .contact-info {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    /* 불필요한 스타일 제거 */
-    background: transparent;
-    padding: 0;
-    box-shadow: none;
 }
-/* [수정] 각 카드에 직접 스타일 적용 */
+
+/* [수정] .info-item의 직접적인 자식(i 태그, div 태그)을 세로로 정렬하고 중앙 정렬 */
 .info-item {
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center;
-    padding: 30px 20px;
-    background: #fff; 
+    background: #fff;
     border: 1px solid #eee;
     border-radius: 8px;
+    padding: 30px 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* 내부 텍스트도 중앙 정렬 */
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .info-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
+
 .info-item i {
     font-size: 28px;
-    color: #333; 
-    margin-bottom: 15px; 
+    color: #333;
+    margin-bottom: 15px;
 }
+
 .info-item h3 {
     font-size: 18px;
     margin-bottom: 5px;
     font-weight: 700;
 }
+
 .info-item p {
     color: #666;
-    font-size: 15px; 
+    font-size: 15px;
 }
 
 
@@ -431,13 +436,14 @@ footer {
 
 /* 반응형 디자인 */
 
-/* [추가] 태블릿 사이즈에서 연락처 2열로 변경 */
+/* 태블릿 사이즈 (992px 이하) */
 @media (max-width: 992px) {
     .contact-info {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* 모바일 사이즈 (768px 이하) */
 @media (max-width: 768px) {
     .container {
         padding: 0 15px;
@@ -501,7 +507,6 @@ footer {
         flex-direction: column;
     }
 
-    /* [수정] 모바일에서 연락처 1열로 변경 */
     .contact-info {
         grid-template-columns: 1fr;
     }
