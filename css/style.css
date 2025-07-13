@@ -56,7 +56,7 @@ header .container {
 .logo h1 {
   font-size: 24px;
   font-weight: 900;
-  color: #0056b3;
+  color: #111; /* 변경: 로고 색상을 검은색으로 */
 }
 
 .nav-menu {
@@ -79,13 +79,13 @@ header .container {
   left: 0;
   width: 0;
   height: 2px;
-  background: #0056b3;
+  background: #111; /* 변경: 밑줄 색상을 검은색으로 */
   transition: width 0.3s;
 }
 
 .nav-menu li a:hover,
 .nav-menu li a.active {
-  color: #0056b3;
+  color: #111; /* 변경: 활성/호버 시 텍스트 색상을 검은색으로 유지 */
 }
 
 .nav-menu li a:hover::after,
@@ -157,7 +157,7 @@ section {
 
 .btn {
   display: inline-block;
-  background: #007bff;
+  background: #333; /* 변경: 버튼 배경을 어두운 회색으로 */
   color: #fff;
   padding: 15px 30px;
   border-radius: 5px;
@@ -167,7 +167,7 @@ section {
 }
 
 .btn:hover {
-  background: #0056b3;
+  background: #000; /* 변경: 버튼 호버 배경을 검은색으로 */
   transform: translateY(-3px);
 }
 
@@ -224,7 +224,7 @@ section {
 }
 
 .features-list i {
-  color: #007bff;
+  color: #333; /* 변경: 체크 아이콘 색상을 어두운 회색으로 */
   margin-right: 10px;
   font-size: 20px;
 }
@@ -282,7 +282,7 @@ section {
     content: '✓';
     position: absolute;
     left: 0;
-    color: #007bff;
+    color: #333; /* 변경: 체크 기호 색상을 어두운 회색으로 */
     font-weight: bold;
 }
 
@@ -302,9 +302,9 @@ section {
 }
 .step-icon {
     font-size: 48px;
-    color: #007bff;
+    color: #333; /* 변경: 아이콘 색상을 어두운 회색으로 */
     margin-bottom: 20px;
-    background: #e9f3ff;
+    background: #f0f0f0; /* 변경: 아이콘 배경을 밝은 회색으로 */
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -327,8 +327,8 @@ section {
 }
 .contact-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 반응형 그리드로 수정 */
+    gap: 20px;
     background: #fff;
     padding: 40px;
     border-radius: 10px;
@@ -336,14 +336,17 @@ section {
 }
 .info-item {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column; /* 세로 정렬로 변경 */
+    align-items: center; /* 가운데 정렬 */
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
 }
 .info-item i {
-    font-size: 24px;
-    color: #007bff;
-    margin-right: 20px;
-    width: 30px;
-    text-align: center;
+    font-size: 28px;
+    color: #333; /* 변경: 아이콘 색상을 어두운 회색으로 */
+    margin-bottom: 15px; /* 텍스트와의 간격 조정 */
 }
 .info-item h3 {
     font-size: 18px;
@@ -351,6 +354,7 @@ section {
 }
 .info-item p {
     color: #666;
+    font-size: 15px; /* 폰트 크기 미세 조정 */
 }
 
 /* 푸터 */
@@ -384,7 +388,7 @@ footer {
     margin-bottom: 10px;
 }
 .footer-links ul li a:hover {
-    color: #007bff;
+    color: #fff; /* 변경: 호버 색상을 흰색으로 */
     padding-left: 5px;
     transition: all 0.3s;
 }
@@ -395,7 +399,7 @@ footer {
     transition: color 0.3s;
 }
 .social-icons a:hover {
-    color: #007bff;
+    color: #fff; /* 변경: 호버 색상을 흰색으로 */
 }
 .footer-bottom {
     text-align: center;
@@ -483,4 +487,11 @@ footer {
     .social-icons {
         text-align: center;
     }
+}
+
+/* 추가: 연락처 섹션 카드 디자인 개선 */
+@media (max-width: 580px) {
+  .contact-info {
+    grid-template-columns: 1fr; /* 모바일에서는 항상 1열 */
+  }
 }
